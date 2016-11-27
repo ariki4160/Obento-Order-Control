@@ -72,8 +72,11 @@
     function querySuccess(tx, results) {
         var len = results.rows.length;
         window.alert("There are " + len + " rows of records in the database.");
+        var dbContentsElement = document.querySelector('#db-contents');
         for (var i=0; i<len; i++){
-            document.writeln("row = " + i + " ID = " + results.rows.item(i).id + " Data = " + results.rows.item(i).data+"<br/>");
+            //document.writeln("row = " + i + " ID = " + results.rows.item(i).id + " Data = " + results.rows.item(i).data+"<br/>");
+            var db_result = db_result + "row = " + i + " ID = " + results.rows.item(i).id + " Data = " + results.rows.item(i).data+"<br/>";
+        dbContentsElement.innerHTML = db_result;
         } 
     }
 
@@ -127,9 +130,9 @@
 
     <ons-button onclick="createDB()">データベースに初期データ挿入</ons-button>
   
-      <p style="text-align: center;">
+      <div style="text-align: center;" id="db-contents">
         データベースの格納内容
-      </p>
+      </div>
   
     </ons-page>
   </ons-template>
